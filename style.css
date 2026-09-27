@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root {
+  --green: #3D4A2E;
+  --yellow: #F0E6C8;
+  --black: #181A1B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--black);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--yellow);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Upper profile area */
+.hero {
+  min-height: 47vh;
+  padding: clamp(44px, 6vh, 78px) 20px 58px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(240, 230, 200, 0.035), transparent 34%),
+    var(--green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Very subtle paper/grain texture without requiring another image asset. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.055;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(240, 230, 200, 0.7) 0.45px, transparent 0.55px),
+    radial-gradient(rgba(0, 0, 0, 0.55) 0.4px, transparent 0.5px);
+  background-size: 7px 7px, 11px 11px;
+  background-position: 0 0, 3px 5px;
+}
+
+.profile {
+  width: clamp(180px, 23vw, 260px);
+  height: clamp(180px, 23vw, 260px);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-shadow:
+    0 0 0 1px rgba(240, 230, 200, 0.08),
+    0 0 28px rgba(240, 230, 200, 0.075);
+  animation: profileIn 650ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+h1 {
+  margin: 20px 0 0;
+  font-size: clamp(30px, 3vw, 43px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  animation: contentIn 550ms 120ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.handle {
+  margin: 24px 0 0;
+  font-size: clamp(17px, 1.8vw, 25px);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  white-space: nowrap;
+  animation: contentIn 550ms 220ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+/* Small decorative separator */
+.handle::after {
+  content: "· ───── ✦ ───── ·";
+  display: block;
+  margin-top: 20px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  opacity: 0.72;
+}
+
+/* Social buttons */
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(46px, 7vw, 90px);
+  margin-top: 42px;
+  animation: iconsIn 600ms 330ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.social-link {
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  color: var(--yellow);
+  text-decoration: none;
+  border-radius: 50%;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease,
+    filter 180ms ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px) scale(1.045);
+  opacity: 0.9;
+  filter: drop-shadow(0 5px 9px rgba(240, 230, 200, 0.10));
+}
+
+.social-link:active {
+  transform: scale(0.95);
+}
+
+.social-link:focus-visible {
+  outline: 1px solid var(--yellow);
+  outline-offset: 7px;
+}
+
+.social-link svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.social-link svg .dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.social-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Lower black area */
+.bottom {
+  flex: 1;
+  min-height: 53vh;
+  background: var(--black);
+}
+
+/* Entrance animations */
+@keyframes profileIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes contentIn {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconsIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 47vh;
+    padding-top: 42px;
+    padding-bottom: 50px;
+  }
+
+  .profile {
+    width: 190px;
+    height: 190px;
+  }
+
+  h1 {
+    margin-top: 18px;
+    font-size: 31px;
+  }
+
+  .handle {
+    margin-top: 23px;
+    font-size: 17px;
+  }
+
+  .handle::after {
+    margin-top: 17px;
+  }
+
+  .socials {
+    gap: 36px;
+    margin-top: 38px;
+  }
+
+  .social-link {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (max-width: 380px) {
+  .socials {
+    gap: 22px;
+  }
+
+  .social-link {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile,
+  h1,
+  .handle,
+  .socials {
+    animation: none;
+  }
+
+  .social-link {
+    transition: none;
+  }
+}
