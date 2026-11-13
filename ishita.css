@@ -37,7 +37,7 @@ h1 { margin: 20px 0 0; font-size: clamp(30px,3vw,43px); line-height: 1.1; font-w
 .social-link:focus-visible { outline: 1px solid var(--yellow); outline-offset: 7px; }
 .social-link svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .social-link svg .dot { fill: currentColor; stroke: none; }
-.social-link img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.social-link img { width: 100%; height: 100%; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(29%) sepia(12%) saturate(1230%) hue-rotate(317deg) brightness(91%) contrast(84%); }
 .bottom { flex: 1; min-height: 53vh; background: var(--black); }
 @keyframes profileIn { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes contentIn { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
